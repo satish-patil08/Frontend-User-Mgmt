@@ -1,0 +1,18 @@
+pipeline {
+  agent any
+
+  stages {
+    stage('Stop the existing process & copy the new one') {
+      steps {
+        sh '''
+        npm install
+        npm run build
+        sudo rm -rf /var/www/react-app/user-mgmt/*
+        sudo cp -a build/. /var/www/react-app/user-mgmt/
+        sudo chown -R www-data:www-data /var/www/react-app/user-mgmt/
+        sudo rm -rd build/
+        '''
+      }
+    }
+  }
+}
