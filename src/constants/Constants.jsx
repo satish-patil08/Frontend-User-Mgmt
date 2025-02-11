@@ -1,1 +1,1 @@
-export const BASE_URL=process.env.BACKEND_BASE_URL;
+export const BASE_URL="http://20.201.119.138";
