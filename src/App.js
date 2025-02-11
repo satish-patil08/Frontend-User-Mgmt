@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import store from './store/store';
 import Header from "./components/header/Header";
 import Login from "./pages/userLogin/Login";
-import { ToastProvider } from "./utils/toast/Toast";
+import { ToastProvider } from "./components/toast/Toast";
 
 const App = () => (
     <Provider store={store}>

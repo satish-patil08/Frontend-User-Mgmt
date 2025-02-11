@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import styles from "./Login.module.scss";
-import {TOAST_STATUS, triggerToast} from "../../utils/toast/CustomeToast";
+import {TOAST_STATUS, triggerToast} from "../../components/toast/CustomeToast";
 import {setCookie, setLocalStorageItem} from "../../utils/localDataStoringMgmt";
 import {loginUserRequest} from "../../store/actions/authActions";
 
