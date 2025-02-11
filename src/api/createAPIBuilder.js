@@ -5,7 +5,7 @@ import {getCookie, getLocalStorageItem} from "../utils/localDataStoringMgmt";
 export const createGenericAPIBuilder = (method, endpoint, params, data = {}) => {
     return axios({
         method: method,
-        url: `http://20.201.119.138${endpoint}`,
+        url: `${BASE_URL}${endpoint}`,
         params: params,
         headers: {
             Authorization: getLocalStorageItem("authToken"),
