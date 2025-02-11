@@ -1,21 +1,21 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import store from './redux/store';
+import store from './store/store';
 import Header from "./components/header/Header";
-import UserListPage from "./pages/userListPage/UserListPage";
-import UserDetailPage from "./pages/userDetailPage/UserDetailPage";
-
+import Login from "./pages/userLogin/Login";
+import { ToastProvider } from "./utils/toast/Toast";
 
 const App = () => (
     <Provider store={store}>
-      <Router>
-        <Header />
-        <Routes>
-          <Route path="/" element={<UserListPage />} />
-          <Route path="/users/:id" element={<UserDetailPage />} />
-        </Routes>
-      </Router>
+        <ToastProvider> {/* Wrap the entire app with ToastProvider */}
+            <Router>
+                <Header />
+                <Routes>
+                    <Route path="/" element={<Login />} />
+                </Routes>
+            </Router>
+        </ToastProvider>
     </Provider>
 );
 
