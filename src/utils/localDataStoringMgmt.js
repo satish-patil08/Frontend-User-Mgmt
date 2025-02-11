@@ -8,3 +8,5 @@ export const removeCookie = (name, options) => new Cookies().remove(name, option
 
 export const setLocalStorageItem = (key, value) => secureLocalStorage.setItem(key, value)
 export const getLocalStorageItem = (key) => secureLocalStorage.getItem(key)
+export const removeLocalStorageItem = (key) => secureLocalStorage.removeItem(key)
+export const clearLocalStorage = () => secureLocalStorage.clear();

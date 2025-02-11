@@ -30,7 +30,7 @@ const Login = () => {
             );
 
             if (loginResponse.success) {
-                setLocalStorageItem("authToken", "Bearer " + loginResponse.authToken);
+                // setLocalStorageItem("authToken", "Bearer " + loginResponse.authToken);
             }
         }
     }, [loginResponse]);
