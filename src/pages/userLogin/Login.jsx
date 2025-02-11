@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, {useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import styles from "./Login.module.scss";
-import { TOAST_STATUS, triggerToast } from "../../utils/toast/CustomeToast";
-import { setLocalStorageItem } from "../../utils/localDataStoringMgmt";
-import { loginUserRequest } from "../../store/actions/authActions";
+import {TOAST_STATUS, triggerToast} from "../../utils/toast/CustomeToast";
+import {setCookie, setLocalStorageItem} from "../../utils/localDataStoringMgmt";
+import {loginUserRequest} from "../../store/actions/authActions";
 
 const Login = () => {
     const dispatch = useDispatch();
-    const { loginLoading, loginResponse } = useSelector((state) => state.loginUser);
+    const {loginLoading, loginResponse} = useSelector((state) => state.loginUser);
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -19,7 +19,7 @@ const Login = () => {
             triggerToast(TOAST_STATUS.warn, "Please enter both email and password.");
             return;
         }
-        dispatch(loginUserRequest({ email, password }));
+        dispatch(loginUserRequest({email, password}));
     };
 
     useEffect(() => {
@@ -29,8 +29,11 @@ const Login = () => {
                 loginResponse.message
             );
 
-            if (loginResponse.success) {
-                // setLocalStorageItem("authToken", "Bearer " + loginResponse.authToken);
+            if (loginResponse?.success === true) {
+                setCookie("userEmail", loginResponse.data.email);
+                setCookie("fullName", loginResponse.data.fullName);
+
+                setLocalStorageItem("authToken", "Bearer " + loginResponse.data.authToken);
             }
         }
     }, [loginResponse]);
